@@ -1,0 +1,26 @@
+<div class="container">
+    <div>
+        <img class="main-img" [src]="destInfo?.image1" alt="" />
+        <div>
+            <img *ngFor="let image of images" class="small" [src]="image" alt="photo" />
+            <i class="fas fa-chevron-left arrow"></i>
+        </div>
+    </div>
+
+    <div>
+        <h1>{{ destInfo?.name }}</h1>
+    </div>
+    <br /><br /><br />
+    <p>{{ destInfo?.description }}</p>
+    <br />
+    <br /><br />
+    <div>
+        {{ destInfo?.program }}
+    </div>
+
+    <div>
+        <button class="btn btn-primary" (click)="dispatchToReservationFormular()">
+      Rezerviraj
+    </button>
+    </div>
+</div>

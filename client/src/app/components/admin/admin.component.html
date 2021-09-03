@@ -1,0 +1,41 @@
+<div class="admin-page">
+    <div class="dashboard-menu">
+        <h6><i class="fas fa-cogs">&nbsp; </i>Admin Dashboard</h6>
+        <br />
+        <div ngbDropdown>
+            <button ngbDropdownToggle (click)="activePanel = 'destinations'" (click)="formOff()" type="button " class="btn btn-primary" data-bs-toggle="button ">
+        <i class="fas fa-map-marker-alt"></i> &nbsp;Destinacije
+        <span class="badge bg-danger ms-2">{{ numberOfDestinations }}</span>
+      </button>
+            <div *ngIf="!formState" ngbDropdownMenu aria-labelledby="dropdownBasic1 ">
+                <button ngbDropdownItem (click)="toggleForm()">
+          Dodaj novu destinaciju
+        </button>
+            </div>
+        </div>
+        <div ngbDropdown>
+            <button (click)="activePanel = 'users'" type="button " class="btn btn-primary" data-bs-toggle="button ">
+        <i class="fas fa-users"></i>&nbsp; Korisnici
+        <span class="badge bg-danger ms-2">{{ numberOfUsers }}</span>
+      </button>
+        </div>
+
+        <div ngbDropdown>
+            <button (click)="activePanel = 'reservations'" (click)="display()" type="button " class="btn btn-primary" data-bs-toggle="button ">
+        <i class="fas fa-clipboard-list"></i>&nbsp; Rezervacije
+        <span class="badge bg-danger ms-2">{{ countReservations }}</span>
+      </button>
+        </div>
+
+        <button type="button " class="btn btn-primary" data-bs-toggle="button ">
+      Large button
+    </button>
+        <button type="button " class="btn btn-primary" data-bs-toggle="button ">
+      Large button
+    </button>
+    </div>
+
+    <app-admin-destinations *ngIf="activePanel == 'destinations'"></app-admin-destinations>
+    <app-admin-users *ngIf="activePanel == 'users'"></app-admin-users>
+    <app-admin-reservations *ngIf="activePanel == 'reservations'"></app-admin-reservations>
+</div>

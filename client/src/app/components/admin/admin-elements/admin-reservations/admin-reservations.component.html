@@ -1,0 +1,52 @@
+<div class="wrapper">
+    <h4>Rezervacije</h4>
+    <table class="table table-striped m-25 dest-table">
+        <thead (click)="check()">
+            <tr>
+                <th scope="col">#</th>
+                <th colspan="4" scope="col">Kijent</th>
+                <th class="wider" colspan="2" scope="col">Destinacija</th>
+                <th>Šifra Destinacije</th>
+                <th colspan="2" scope="col">Tip aranžmana</th>
+                <th class="wider" colspan="3" scope="col">Vrsta plaćanja</th>
+                <th class="wider" colspan="3" scope="col">Tip prijevoza</th>
+                <th colspan="2" scope="col">Rezervacija otkazana</th>
+                <th colspan="2" scope="col">Checked</th>
+                <th colspan="2" scope="col">&nbsp;&nbsp;</th>
+                <th colspan="4" scope="col ">Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let reservation of allReservations" [class.back-canceled]="reservation.reservation_is_canceled == 'TRUE'">
+                <th scope="row ">{{ reservation.res_id }}</th>
+                <td colspan="4">
+                    {{ reservation.first_name }}&nbsp;{{ reservation.last_name }}
+                </td>
+                <td class="wider" colspan="2">{{ reservation.name }}</td>
+                <td>{{ reservation.destination_id }}</td>
+                <td>{{ reservation.type }}</td>
+                <td class="wider" colspan="3">{{ reservation.payment_type }}</td>
+                <td class="wider" colspan="3">{{ reservation.transport_type }}</td>
+                <td colspan="2">{{ reservation.reservation_is_canceled }}</td>
+
+                <td colspan="2">
+                    <strong>{{ reservation.is_checked }}</strong>
+                </td>
+                <td colspan="2">&nbsp;&nbsp;</td>
+                <td>
+                    <button *ngIf="reservation.reservation_is_canceled == 'TRUE'" (click)="restoreReservation(reservation.res_id)" type="button" class="btn btn-success">
+            <i class="fas fa-trash-restore"></i>&nbsp;Restore
+          </button>
+                    <button *ngIf="reservation.reservation_is_canceled == 'FALSE'" (click)="cancelReservation(reservation.res_id)" type="button" class="btn btn-warning">
+            <i class="fas fa-plane-slash"></i>&nbsp;Otkaži
+          </button>
+                </td>
+                <td>
+                    <button (click)="deleteReservation(reservation.res_id)" type="button" class="btn btn-danger">
+            <i class="fas fa-trash"></i>&nbsp;Obriši
+          </button>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>

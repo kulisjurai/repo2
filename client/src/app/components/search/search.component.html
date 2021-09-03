@@ -1,0 +1,13 @@
+<div [class.containerr]="!searchState" [class.none]="searchState">
+    <i title="Close search bar" (click)="closingFunction()" class="fas fa-times"></i>
+    <form action="/action_page.php ">
+        <div class="input-group">
+            <input autocomplete="off" type="text " class="form-control shadow-none" placeholder="Pretraži " name="search" />
+            <div class="input-group-btn">
+                <button class="btn btn-warning search-btn shadow-none">
+          <i class="fas fa-search"></i>
+        </button>
+            </div>
+        </div>
+    </form>
+</div>

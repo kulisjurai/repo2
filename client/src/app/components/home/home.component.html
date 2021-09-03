@@ -1,0 +1,29 @@
+<!-- <app-slider></app-slider> -->
+<div class="containerr mb-5">
+    <app-slider></app-slider>
+</div>
+<div class="header">
+    <h1>Za Vas smo izdvojili!</h1>
+</div>
+<div class="home-main-container">
+    <div class="card" *ngFor="let destination of allDestinationsArray" (click)="openFullInformation(destination.dest_id)">
+        <div>
+            <img [src]="destination.image1" alt="Photo" />
+            <div class="price">
+                <h4 style="display: inline">od</h4>
+                <span><h4 style="display: inline">&nbsp;{{ destination.price }}</h4></span
+        >
+        <h4 style="display: inline">&nbsp;KM</h4>
+      </div>
+    </div>
+    <div class="card-header">
+      <h3>{{ destination.name }}</h3>
+    </div>
+    <div class="card-info">
+      <p>{{ destination.description | descriptonPipe }}</p>
+    </div>
+    <h6 style="text-align: end; margin-right: 30px">Saznajte više...</h6>
+  </div>
+</div>
+
+<app-footer></app-footer>
